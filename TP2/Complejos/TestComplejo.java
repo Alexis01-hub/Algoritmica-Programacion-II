@@ -29,5 +29,5 @@ public class TestComplejo {
 
         c1.producto(c2);
         System.out.println(c1);
+        }
     }
-}
