@@ -14,6 +14,7 @@ package ConjuntoEnteros;
  * - diferencia: Crea un nuevo conjunto con la diferencia entre dos conjuntos.
  */
 public class ConjuntoEnteros {
+    
     private boolean[] conjunto; //Arreglo de booleans que representa el conjunto
     private static final int MAX = 101; // Tamaño máximo del conjunto (0 a 100)
     
@@ -50,35 +51,6 @@ public class ConjuntoEnteros {
         }
     }
 
-    /**
-     * Devuelve una representación en cadena de los elementos presentes en el conjunto.
-     * 
-     * @return Una cadena con los elementos del conjunto separados por espacios.
-     */
-    public String aStringConjunto(){
-        StringBuilder sb = new StringBuilder();
-        for(int i =0; i<MAX; i++){
-            if (conjunto[i]) {
-                sb.append(i).append(" ");
-            }
-        }
-    return sb.toString().trim(); // Devuelve la cadena sin espacios al final
-    }
-    
-    /**
-     * Determina si dos conjuntos son iguales.
-     * 
-     * @param otroConjunto El conjunto a comparar.
-     * @return true si ambos conjuntos son iguales, false en caso contrario.
-     */
-    public boolean esIgualA(ConjuntoEnteros otroConjunto){
-        for ( int i = 0; i< MAX; i++){
-            if (conjunto[i] != otroConjunto.conjunto[i]) {
-                return false; // Si hay una diferencia, los conjuntos no son iguales
-            }
-        }
-    return true; // Si no hay diferencias, los conjuntos son iguales
-    }
 
     /**
      * Crea un nuevo conjunto que representa la unión de este conjunto con otro.
@@ -121,4 +93,40 @@ public class ConjuntoEnteros {
         }
         return diferenciaConjunto; // Devuelve el nuevo conjunto de diferencia
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7; // Inicializa el valor del hash
+        for (int i = 0; i < MAX; i++) {
+            hash = 31 * hash + (conjunto[i] ? 1 : 0); // Calcula el hash combinando los valores booleanos
+        }
+        return hash; // Devuelve el valor del hash
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Verifica si son la misma instancia
+        if (obj == null || !(obj instanceof ConjuntoEnteros)) return false; // Verifica si el objeto es nulo o del mismo tipo
+        ConjuntoEnteros otroConjunto = (ConjuntoEnteros) obj; // Convierte el objeto a ConjuntoEnteros
+        for (int i = 0; i < MAX; i++) {
+            if (this.conjunto[i] != otroConjunto.conjunto[i]) return false; // Compara los elementos de ambos conjuntos
+        }
+        return true; // Devuelve true si todos los elementos son iguales
+    }
+    
+    /**
+    * Devuelve una representación en cadena de los elementos presentes en el conjunto.
+    * 
+    * @return Una cadena con los elementos del conjunto separados por espacios.
+    */
+    public String aStringConjunto(){
+       StringBuilder sb = new StringBuilder();
+        for(int i =0; i<MAX; i++){
+            if (conjunto[i]) {
+                sb.append(i).append(" ");
+            }
+        }
+        return sb.toString().trim(); // Devuelve la cadena sin espacios al final
+    }
 }
+

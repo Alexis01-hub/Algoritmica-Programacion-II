@@ -1,6 +1,6 @@
 package ConjuntoEnteros;
 
-public class TestConjuntoEnteros {
+public class PruebaConjuntoEnteros {
     public static void main(String[] args) {
         // Crear dos instancias de ConjuntoEnteros
         ConjuntoEnteros conjunto1 = new ConjuntoEnteros();
@@ -18,25 +18,27 @@ public class TestConjuntoEnteros {
         conjunto1.insertarElemento(1); // Agregar elemento 1 al conjunto1
         conjunto1.insertarElemento(2); // Agregar elemento 2 al conjunto1
         conjunto1.insertarElemento(4); // Agregar elemento 4 al conjunto1
+        conjunto1.insertarElemento(5);
         //inserto en conjunto2
-        conjunto2.insertarElemento(2); // Agregar elemento 2 al conjunto2
-        conjunto2.insertarElemento(3); // Agregar elemento 3 al conjunto2
-        conjunto2.insertarElemento(5); // Agregar elemento 5 al conjunto2
+        conjunto2.insertarElemento(1); // Agregar elemento 2 al conjunto2
+        conjunto2.insertarElemento(2); // Agregar elemento 3 al conjunto2
+        conjunto2.insertarElemento(4); // Agregar elemento 5 al conjunto2
+        conjunto2.insertarElemento(6); // Agregar elemento 6 al conjunto2
         System.out.println("Conjunto 1: " + conjunto1.aStringConjunto());
         System.out.println("Conjunto 2: " + conjunto2.aStringConjunto());
         System.out.println("------------------------------------------------");
 
         // Eliminar elementos de los conjuntos
         System.out.println("Eliminando elementos del conjunto 1 y 2...");
-        conjunto1.eliminarElemento(4); // Eliminar elemento 4 del conjunto1
+        conjunto1.eliminarElemento(5); // Eliminar elemento 4 del conjunto1
         System.out.println("Conjunto 1: " + conjunto1.aStringConjunto());
-        conjunto2.eliminarElemento(3); // Eliminar elemento 3 del conjunto2
+        conjunto2.eliminarElemento(6); // Eliminar elemento 3 del conjunto2
         System.out.println("Conjunto 2: " + conjunto2.aStringConjunto());
         System.out.println("------------------------------------------------");
 
         // Comparar si los conjuntos son iguales
         System.out.println("Comparando conjuntos...");
-        if (conjunto1.esIgualA(conjunto2)) {
+        if (conjunto1.equals(conjunto2)) { // Usar equals en lugar de esIgualA
             System.out.println("Los conjuntos son iguales."); // Mensaje si son iguales
         } else {
             System.out.println("Los conjuntos son diferentes."); // Mensaje si son diferentes
