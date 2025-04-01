@@ -161,3 +161,27 @@ independiente de otras clases como sea posible.
 cuidado y precisión, de modo que las consecuencias de cada acción
 realizada por una clase sean bien comprendidas por otras clases que
 interactúen con ella.
+
+//El nombre de un arreglo es la direccion de memoria
+## Interface
+Una **interfaz** en Java es un **contrato** que define qué métodos debe implementar una clase, pero no cómo lo hace (a menos que sean métodos default o static).
+
+📌 **Características principales**:
+- Solo contiene métodos abstractos (antes de Java 8).
+- Puede tener métodos default y static con implementación (desde Java 8).
+- Solo admite constantes (public static final).
+- No se puede instanciar (como las clases abstractas).
+- Una clase puede implementar múltiples interfaces (herencia múltiple).
+
+``` java
+interface Animal {
+    void hacerSonido();  // Método abstracto (sin implementación)
+}
+
+class Perro implements Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("¡Guau!");  // Implementación obligatoria
+    }
+}
+```
