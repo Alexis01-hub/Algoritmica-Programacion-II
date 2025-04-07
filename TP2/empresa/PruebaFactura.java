@@ -17,8 +17,7 @@ public class PruebaFactura {
 		factura.agregarItem("agua", 100, 100);
 		factura.agregarItem("jugo", 100, 100);
 		factura.agregarItem("galletas", 100, 100);
-		factura.agregarItem("yerba", 100, 100);
-		factura.agregarItem("chicle", 100, 100);
+		
 
 		// Imprimir la representación de la factura
 		System.out.println(factura.toString());

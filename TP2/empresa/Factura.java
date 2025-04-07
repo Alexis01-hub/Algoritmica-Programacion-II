@@ -60,7 +60,7 @@ public class Factura implements PorPagar {
 	 * @param precioUnitario Precio unitario del artículo.
 	 * @throws IndexOutOfBoundsException Si se excede la cantidad máxima de artículos.
 	 */
-	public void agregarItem(String descripcion, int cantidad, double precioUnitario) throws IndexOutOfBoundsException {
+	public void agregarItem(String descripcion, int cantidad, double precioUnitario){
 		if (cantArticulos > CANTIDAD_ITEMS)
 			throw new IndexOutOfBoundsException("Factura completa");
 
@@ -77,7 +77,7 @@ public class Factura implements PorPagar {
 	public String toString() {
 		StringBuilder articulosStr = new StringBuilder();
 		for (int i = 0; i < cantArticulos; i++) {
-			articulosStr.append(articulos[i].toString()).append("\n");
+			articulosStr.append(articulos[i].toString()).append("\n").append("");
 		}
 		return "\n" + "Proveedor: " + proveedor + "\n" + "Numero: " + numero + "\n" + "Fecha: " + fecha + "\n" +
 			   "Cantidad de articulos: " + cantArticulos + "\n\n" + // Salto de línea adicional
