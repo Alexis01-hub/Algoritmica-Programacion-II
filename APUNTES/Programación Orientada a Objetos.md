@@ -162,8 +162,134 @@ cuidado y precisión, de modo que las consecuencias de cada acción
 realizada por una clase sean bien comprendidas por otras clases que
 interactúen con ella.
 
+### 4. UML
+**Un diagrama de clase tiene tres porciones:**
+1. El nombre de la clase
+2. Las variables de instancia recomendadas
+3. Los métodos de clases recomendados.
+
+**Ejemplo clase Base: `Animal`**
+```plaintext
++---------------+
+|    Animal     |
++---------------+
+| - nombre: String |
+| - edad: int    |
++---------------+
+| + comer()     |
+| + dormir()    |
++---------------+
+```
+**Símbolos de Acceso en UML**
+
+```plaintext
++------------------------+
+|       Símbolos         |
++------------------------+
+| + público              |
+| - privado              |
+| # protegido            |
++------------------------+
+```
+## Definición de Clases 
+- Una clase sirve como el medio principal para la abstracción en la
+programación orientada a objetos.
+- En Java, cada variable es un tipo base (primitivo) o es una referencia a una
+instancia de alguna clase.
+- Una clase proporciona un conjunto de comportamientos en forma de
+funciones miembro (también conocidas como métodos), con
+implementaciones que pertenecen a todas sus instancias.
+- Una clase también sirve como modelo para sus instancias, determinando
+de manera efectiva la forma en que se representa la información de estado
+para cada instancia en forma de atributos (también conocidos como
+campos, variables de instancia o miembros de datos).
+
+## Constructores
+- Un usuario puede crear una instancia de una clase utilizando el
+operador new con un método que tiene el mismo nombre que la
+clase.
+- Tal método, conocido como constructor, tiene como responsabilidad
+establecer el estado de un nuevo objeto con valores iniciales
+apropiados para sus variables de instancia.
+
+### 5. Herencia
++ *Extensión:* Subclases heredan atributos/métodos de superclases.
+
++ *Constructores:* No se heredan; usan super() para inicializar campos heredados.
+
+**Ejemplo:**
+```java
+// Clase padre o superclase
+class Animal {
+    String nombre;
+
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+// Clase hija o subclase que hereda de Animal
+class Perro extends Animal {
+
+    public void moverCola() {
+        System.out.println(nombre + " mueve la cola");
+    }
+
+    // Sobrescritura del método hacerSonido()
+    @Override
+    public void hacerSonido() {
+        System.out.println(nombre + " dice: ¡Guau!");
+    }
+}
+
+// Clase principal para probar
+public class Main {
+    public static void main(String[] args) {
+        Perro miPerro = new Perro();
+        miPerro.nombre = "Firulais";
+        miPerro.hacerSonido();  // Firulais dice: ¡Guau!
+        miPerro.moverCola();    // Firulais mueve la cola
+    }
+}
+```
+### 6. Clases Abstractas
+- Uso: Definir métodos abstractos (sin cuerpo) para implementación en subclases.
+```java
+// Clase abstracta
+abstract class Animal {
+    String nombre;
+
+    // Método concreto
+    public void dormir() {
+        System.out.println(nombre + " está durmiendo...");
+    }
+
+    // Método abstracto (sin implementación)
+    public abstract void hacerSonido();
+}
+
+// Subclase que implementa los métodos abstractos
+class Gato extends Animal {
+
+    @Override
+    public void hacerSonido() {
+        System.out.println(nombre + " dice: ¡Miau!");
+    }
+}
+
+// Clase principal para probar
+public class Main {
+    public static void main(String[] args) {
+        Gato miGato = new Gato();
+        miGato.nombre = "Michifú";
+        miGato.hacerSonido();   // Michifú dice: ¡Miau!
+        miGato.dormir();        // Michifú está durmiendo...
+    }
+}
+```
+
 //El nombre de un arreglo es la direccion de memoria
-## Interface
+### 7. Interface
 Una **interfaz** en Java es un **contrato** que define qué métodos debe implementar una clase, pero no cómo lo hace (a menos que sean métodos default o static).
 
 📌 **Características principales**:
@@ -182,6 +308,61 @@ class Perro implements Animal {
     @Override
     public void hacerSonido() {
         System.out.println("¡Guau!");  // Implementación obligatoria
+    }
+}
+```
+### 8. Excepciones
+- Se manejan con bloques ```try - catch```.
+
+- Se lanzan con ```throw``` y se declaran con ```throws```
+
+```java
+public class EjemploExcepcion {
+    public static void main(String[] args) {
+        try {
+            int resultado = 10 / 0;  // Esto lanza ArithmeticException
+            System.out.println("Resultado: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("No se puede dividir por cero.");
+        }
+
+        System.out.println("Fin del programa.");
+    }
+}
+```
+### 9. Casting
+- **Upcasting:** Subclase a superclase (automático).
+- **Downcasting:** Superclase a subclase (requiere cast explícito).
+```java
+Animal a = new Perro();             // Upcasting
+Perro p = (Perro) a;                // Downcasting
+```
+### 10. Genericos
+Permiten escribir clases/métodos que funcionan con cualquier tipo de dato.
+```java
+// Clase genérica
+class Caja<T> {
+    private T contenido;
+
+    public void guardar(T valor) {
+        contenido = valor;
+    }
+
+    public T obtener() {
+        return contenido;
+    }
+}
+
+// Clase principal
+public class Main {
+    public static void main(String[] args) {
+        Caja<String> cajaTexto = new Caja<>();
+        cajaTexto.guardar("Hola mundo");
+        System.out.println(cajaTexto.obtener()); // Muestra: Hola mundo
+
+        Caja<Integer> cajaNumero = new Caja<>();
+        cajaNumero.guardar(123);
+        System.out.println(cajaNumero.obtener()); // Muestra: 123
     }
 }
 ```
