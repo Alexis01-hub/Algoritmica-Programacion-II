@@ -1,3 +1,5 @@
+package test;
+
 import lista.Lista;
 
 public class TestAdd {
@@ -30,7 +32,7 @@ public class TestAdd {
 
 	// Insertar antes
 	// Antes: { A }
-	// Despu�s: { B, A }
+	// Despues: { B, A }
 	public static void testAdd2() {
 		try {
 			Lista<String> lista = new Lista<String>(10);
