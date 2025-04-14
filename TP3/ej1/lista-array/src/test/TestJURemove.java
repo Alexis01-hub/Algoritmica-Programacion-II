@@ -1,3 +1,6 @@
+package test;
+
+import lista.Lista;
 
 import org.junit.Assert;
 import org.junit.Before;

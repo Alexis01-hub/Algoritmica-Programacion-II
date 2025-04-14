@@ -1,3 +1,6 @@
+package test;
+
+import lista.Lista;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +15,7 @@ public class TestJUAdd {
 	public void setUp() throws Exception {
 	}
 
-	// Insertar en una lista vacía
+	// Insertar en una lista vacï¿½a
 	@Test
 	public void testAdd1() {
 		Lista<String> lista1 = new Lista<String>(10);

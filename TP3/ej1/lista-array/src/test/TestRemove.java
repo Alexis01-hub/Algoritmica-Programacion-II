@@ -1,4 +1,6 @@
+package test;
 
+import lista.Lista;
 
 public class TestRemove {
 
