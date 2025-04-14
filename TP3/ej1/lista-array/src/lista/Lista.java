@@ -61,7 +61,28 @@ public class Lista<E> {
 		indice--;
 		return e;
 	}
-	
+
+	// equals y hashCode son necesarios para las pruebas unitarias
+	//----------------------------
+	public boolean equals(Object o) {
+		if (o == null || !(o instanceof Lista<?>))
+			return false;
+		Lista<?> l = (Lista<?>) o;
+		if (l.indice != indice)
+			return false;
+		for (int i = 0; i < indice; i++)
+			if (!lista[i].equals(l.lista[i]))
+				return false;
+		return true;
+	}
+
+	public int hashCode() {
+		int h = 0;
+		for (int i = 0; i < indice; i++)
+			h += lista[i].hashCode();
+		return h;
+	}
+	//---------------------------
 	public String toString(){
 		String s = "";
 		for(int i=0; i<indice; i++)
