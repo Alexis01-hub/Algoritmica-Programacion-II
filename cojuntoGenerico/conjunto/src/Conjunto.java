@@ -33,11 +33,7 @@ public class Conjunto<T> {
      * @return Número de elementos en el conjunto.
      */
     public int cardinalidad() {
-        if (p < data.length) { // Si hay espacio en el conjunto.
-            return p; // Retorna la cantidad de elementos.
-        } else { // Si no hay espacio en el conjunto.
-            return data.length; // Retorna la capacidad del conjunto.
-        }
+        return p; // Retorna el contador de elementos.
     }
 
     /**
