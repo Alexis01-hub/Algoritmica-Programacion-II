@@ -1,4 +1,10 @@
+<<<<<<< HEAD:TP3/test/TestAdd.java
 
+=======
+package test;
+
+import lista.Lista;
+>>>>>>> 8d849cb0d63aac96ceba318ee1859d11683020bd:TP3/ej1/lista-array/src/test/TestAdd.java
 
 public class TestAdd {
 
@@ -30,7 +36,7 @@ public class TestAdd {
 
 	// Insertar antes
 	// Antes: { A }
-	// Despu�s: { B, A }
+	// Despues: { B, A }
 	public static void testAdd2() {
 		try {
 			Lista<String> lista = new Lista<String>(10);

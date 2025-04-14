@@ -12,7 +12,7 @@ public class TestJUAdd {
 	public void setUp() throws Exception {
 	}
 
-	// Insertar en una lista vacï¿½a
+	// Insertar en una lista vacía
 	@Test
 	public void testAdd1() {
 		Lista<String> lista1 = new Lista<String>(10);
