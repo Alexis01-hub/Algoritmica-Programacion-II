@@ -1,10 +1,8 @@
-package test;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import lista.Lista;
 
 public class TestJURemove {
 
@@ -30,7 +28,7 @@ public class TestJURemove {
 		Assert.assertEquals(elemento, "A");
 	}
 
-	// Remover último elemento
+	// Remover ï¿½ltimo elemento
 	@Test
 	public void testRemove2() {
 		String elemento = lista1.remove(1);
@@ -40,19 +38,19 @@ public class TestJURemove {
 		Assert.assertEquals(elemento, "B");
 	}
 
-	// Remover en una lista vacía
+	// Remover en una lista vacï¿½a
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemove3() {
 		lista2.remove(0);
 	}
 
-	// Remover índice negativo
+	// Remover ï¿½ndice negativo
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemove4() {
 		lista1.remove(-1);
 	}
 
-	// Remover índice fuera de rango
+	// Remover ï¿½ndice fuera de rango
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemove5() {
 		lista1.remove(2);

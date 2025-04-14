@@ -59,12 +59,14 @@ public class Lista<E> {
 	 * 
 	 */
 	public E remove(E e) {
-		for (int i = 0; i < indice; i++) { // Recorre la lista
-			if (lista[i].equals(e)) { // Si encuentra el elemento
-				return remove(i); // Llama a remove(int p) con el índice correcto
-			}
-		}
-		return null; // Si no se encuentra el elemento, retorna null
+		boolean encontrado = false;
+		int i;
+		for(i =0;i<indice && !encontrado;i++) //recorre la lista buscando el elemento
+			if(lista[i].equals(e)) //si encuentra el elemento lo marca como encontrado
+				encontrado = true;
+		if(!encontrado) //si no encuentra el elemento lanza una exepcion
+			return null;
+		return remove(i);
 	}
 	/**
 	 *  Remueve el elemento que se encuentra en la posicion p. 
