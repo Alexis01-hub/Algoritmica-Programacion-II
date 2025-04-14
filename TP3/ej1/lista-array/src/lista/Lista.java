@@ -64,6 +64,7 @@ public class Lista<E> {
 
 	// equals y hashCode son necesarios para las pruebas unitarias
 	//----------------------------
+	@Override
 	public boolean equals(Object o) {
 		if (o == null || !(o instanceof Lista<?>))
 			return false;
@@ -75,7 +76,7 @@ public class Lista<E> {
 				return false;
 		return true;
 	}
-
+	@Override
 	public int hashCode() {
 		int h = 0;
 		for (int i = 0; i < indice; i++)
