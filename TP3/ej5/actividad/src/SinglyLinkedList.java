@@ -146,24 +146,24 @@ public class SinglyLinkedList<E> implements Cloneable {
   /**
    * Agrega un elemento en una posición específica de la lista.
    * @param e  el nuevo elemento a agregar
-   * @param pos  la posición donde se debe agregar el nuevo elemento
+   * @param n  la posición donde se debe agregar el nuevo elemento
    */
-  public void addPos(E e, int pos) throws IndexOutOfBoundsException {
+  public void addPos(E e, int n) throws IndexOutOfBoundsException {
       // Verifica si la posicion es válida
-      if (pos < 0 || pos > size) {
+      if (n < 0 || n > size) {
           throw new IndexOutOfBoundsException("Posicion no valida ");
       }
       // Si la posicion es 0, agrega al inicio
-      if (pos == 0) {
+      if (n == 0) {
           addFirst(e);
       // Si la posicion es igual al tamaño, agrega al final
-      }else if (pos == size) {
+      }else if (n == size) {
           addLast(e);
       // Si la posicion es mayor que 0 y menor que el tamaño, agrega en medio
       }else{
           Node<E> walk = head; // Inicializa el nodo para recorrer la lista
           
-          for(int i = 0; i < pos - 1; i++){
+          for(int i = 0; i < n - 1; i++){
               walk = walk.getNext(); // Recorre la lista hasta la posicion deseada
           }
 
@@ -204,17 +204,17 @@ public class SinglyLinkedList<E> implements Cloneable {
    * @param pos  la posición del elemento a eliminar
    * @return el elemento eliminado (o null si no se encuentra)
    */
-   public E removePos(int pos) throws IndexOutOfBoundsException{
+   public E removePos(int n) throws IndexOutOfBoundsException{
       //verifica si la posicion es valida
-      if (pos < 0 || pos >= size){
+      if (n < 0 || n >= size){
           throw new IndexOutOfBoundsException("Posicion no valida ");
       }
       // Si la posicion es 0, elimina el primer elemento
-      if (pos == 0){
+      if (n == 0){
           return removeFirst();
       }else{
         Node<E> current = head; // Inicializa el nodo para recorrer la lista
-        for (int i = 0; i < pos - 1; i++) { // Recorre la lista hasta la posicion deseada
+        for (int i = 0; i < n - 1; i++) { // Recorre la lista hasta la posicion deseada
             current = current.getNext();
         }
         Node<E> nodeToRemove = current.getNext(); // Nodo a eliminar
@@ -233,17 +233,17 @@ public class SinglyLinkedList<E> implements Cloneable {
     * Concatena dos listas enlazadas.
     * @return la lista concatenada
     */
-   public void concatenate(SinglyLinkedList<E> otro){
-      if (otro == null || otro.isEmpty()) return; // Verifica si la lista es nula o está vacía
+   public void concatenate(SinglyLinkedList<E> l){
+      if (l == null || l.isEmpty()) return; // Verifica si la lista es nula o está vacía
       if (isEmpty()) { // Si la lista actual está vacía, simplemente asigna la otra lista
-          this.head = otro.head;
-          this.tail = otro.tail;
+          this.head = l.head;
+          this.tail = l.tail;
       }else{
         // Si la lista actual no está vacía, enlaza el último nodo de la lista actual con el primero de la otra
-          this.tail.setNext(otro.head); // Enlaza el último nodo de la lista actual con el primero de la otra
-          this.tail = otro.tail; // Cambia la cola de la lista actual
+          this.tail.setNext(l.head); // Enlaza el último nodo de la lista actual con el primero de la otra
+          this.tail = l.tail; // Cambia la cola de la lista actual
       }
-      this.size += otro.size; // Incrementa el tamaño de la lista actual 
+      this.size += l.size; // Incrementa el tamaño de la lista actual 
    }
 
    /**
