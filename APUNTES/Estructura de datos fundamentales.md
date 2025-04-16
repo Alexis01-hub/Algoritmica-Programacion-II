@@ -193,3 +193,6 @@ Esto permite recorrer la lista en ambas direcciones.
 
 - Recorrer hacia adelante y hacia atrás.
 
+![Lista Doblemente Enlazada](imagenes/ListaDoblementeEnlazada.png)
+
+
