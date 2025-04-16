@@ -107,3 +107,89 @@ public class EjemploJavaUtil {
 }
 ```
 ## 2. Listas 
+
+### *Listas Simplemente Enlazadas*
+**✅ Definición:**
+Una lista enlazada simple es una estructura de datos lineal compuesta por nodos. Cada nodo contiene: 
+- Un dato.
+
+- Una referencia (o puntero) al siguiente nodo de la lista.
+
+**🔧 Características:**
+- El primer nodo se llama cabeza (head).
+- El último nodo apunta a null o None (no hay más elementos).
+- Se recorre de forma secuencial, sólo hacia adelante.
+- No tiene un tamaño fijo como los arrays.
+
+**📦 Estructura de un Nodo:**
+```
++----------+------------+
+|  Dato    |  Siguiente |
++----------+------------+
+```
+
+
+**🔁 Operaciones Básicas:**
+- Insertar: al principio, al final o en una posición específica.
+
+- Eliminar: un nodo por valor o por posición.
+
+- Buscar: recorrer la lista hasta encontrar un valor.
+
+- Recorrer: visitar cada nodo en orden.
+
+![Lista Enlazada Simple](imagenes/ListaSimplementeEnlazada.png)
+
+### *Lista Enlazada Circular*
+**✅ Definición:**
+Una lista enlazada circular es una variante de la lista enlazada en la que el último nodo no apunta a null, sino que vuelve al primer nodo, formando un ciclo cerrado.
+
+🔧 **Características:**
+- El último nodo apunta al primero, formando un bucle.
+- Puede ser simple (cada nodo apunta solo al siguiente) o doblemente enlazada circular.
+- Se puede recorrer la lista de forma continua sin encontrar un ```null```.
+- Se necesita tener cuidado para evitar bucles infinitos al recorrerla.
+
+🔁 **Operaciones Básicas:**
+- Insertar: similar a la lista simple, pero al insertar al final, hay que actualizar el puntero del último nodo para que apunte al nuevo nodo y este al primero.
+
+- Eliminar: cuidado especial al borrar el único nodo o el nodo al que apunta el último.
+
+- Recorrer: se recorre hasta volver al nodo de inicio (generalmente head).
+
+![Lista Enlazada Circular](imagenes/ListaCircular.png)
+### *Lista Doblemente Enlazada* 
+✅ **Definición:**
+Una lista doblemente enlazada es una estructura de datos lineal donde cada nodo contiene dos referencias:
+
+- Una al nodo siguiente.
+
+- Una al nodo anterior.
+
+Esto permite recorrer la lista en ambas direcciones.
+
+🔧 **Características:**
+- Hay un puntero al siguiente nodo y uno al anterior.
+
+- El primer nodo tiene su referencia anterior como null.
+
+- El último nodo tiene su referencia siguiente como null.
+
+- También existe la versión circular (el último apunta al primero y viceversa).
+
+📦 **Estructura de un Nodo:**
+
+```
++-----------+----------+------------+
+| Anterior  |   Dato   |  Siguiente |
++-----------+----------+------------+
+```
+
+
+🔁 **Operaciones Básicas:**
+- Insertar: se puede insertar antes o después de un nodo con facilidad.
+
+- Eliminar: más eficiente porque se puede acceder al nodo anterior directamente.
+
+- Recorrer hacia adelante y hacia atrás.
+
