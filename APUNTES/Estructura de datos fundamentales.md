@@ -106,4 +106,4 @@ public class EjemploJavaUtil {
     }
 }
 ```
-## 2. Listas simplemente enlazadas
+## 2. Listas 
