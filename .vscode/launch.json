@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DoublyLinkedListTest",
+            "request": "launch",
+            "mainClass": "TP3.ej7.actividad.test.DoublyLinkedListTest",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
             "name": "test2",
             "request": "launch",
             "mainClass": "test2",
