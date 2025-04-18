@@ -4,7 +4,13 @@
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "test2",
+            "request": "launch",
+            "mainClass": "test2",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
         {
             "type": "java",
             "name": "Current File",

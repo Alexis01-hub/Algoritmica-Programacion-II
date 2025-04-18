@@ -1,138 +1,115 @@
-/*
- * Copyright 2014, Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser
- *
- * Developed for use with the book:
- *
- *    Data Structures and Algorithms in Java, Sixth Edition
- *    Michael T. Goodrich, Roberto Tamassia, and Michael H. Goldwasser
- *    John Wiley & Sons, 2014
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-package TP3.ej6.actividad.src;
-
+package actividad.src;
 /**
- * An implementation of a circularly linked list.
+ * Una implementación de una lista enlazada circular.
  *
  * @author Michael T. Goodrich
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
  */
 public class CircularlyLinkedList<E> {
-  //---------------- nested Node class ----------------
+  //---------------- clase anidada Node ----------------
   /**
-   * Singly linked node, which stores a reference to its element and
-   * to the subsequent node in the list.
+   * Nodo de una lista enlazada simple, que almacena una referencia a su
+   * elemento y al nodo siguiente en la lista.
    */
   private static class Node<E> {
 
-    /** The element stored at this node */
-    private E element;     // an element stored at this node
+    /** El elemento almacenado en este nodo */
+    private E element;     // un elemento almacenado en este nodo
 
-    /** A reference to the subsequent node in the list */
-    private Node<E> next;  // a reference to the subsequent node in the list
+    /** Una referencia al nodo siguiente en la lista */
+    private Node<E> next;  // una referencia al nodo siguiente en la lista
 
     /**
-     * Creates a node with the given element and next node.
+     * Crea un nodo con el elemento dado y el nodo siguiente.
      *
-     * @param e  the element to be stored
-     * @param n  reference to a node that should follow the new node
+     * @param e  el elemento que se almacenará
+     * @param n  referencia a un nodo que debe seguir al nuevo nodo
      */
     public Node(E e, Node<E> n) {
       element = e;
       next = n;
     }
 
-    // Accessor methods
+    // Métodos de acceso
     /**
-     * Returns the element stored at the node.
-     * @return the element stored at the node
+     * Devuelve el elemento almacenado en el nodo.
+     * @return el elemento almacenado en el nodo
      */
     public E getElement() { return element; }
 
     /**
-     * Returns the node that follows this one (or null if no such node).
-     * @return the following node
+     * Devuelve el nodo que sigue a este (o null si no hay tal nodo).
+     * @return el nodo siguiente
      */
     public Node<E> getNext() { return next; }
 
-    // Modifier methods
+    // Métodos modificadores
     /**
-     * Sets the node's next reference to point to Node n.
-     * @param n    the node that should follow this one
+     * Establece la referencia siguiente del nodo para que apunte al nodo n.
+     * @param n    el nodo que debe seguir a este
      */
     public void setNext(Node<E> n) { next = n; }
-  } //----------- end of nested Node class -----------
+  } //----------- fin de la clase anidada Node -----------
 
-  // instance variables of the CircularlyLinkedList
-  /** The designated cursor of the list */
-  private Node<E> tail = null;                  // we store tail (but not head)
+  // Variables de instancia de CircularlyLinkedList
+  /** El cursor designado de la lista */
+  private Node<E> tail = null;                  // almacenamos tail (pero no head)
 
-  /** Number of nodes in the list */
-  private int size = 0;                         // number of nodes in the list
+  /** Número de nodos en la lista */
+  private int size = 0;                         // número de nodos en la lista
 
-  /** Constructs an initially empty list. */
-  public CircularlyLinkedList() { }             // constructs an initially empty list
+  /** Construye una lista inicialmente vacía. */
+  public CircularlyLinkedList() { }             // construye una lista inicialmente vacía
 
-  // access methods
+  // Métodos de acceso
   /**
-   * Returns the number of elements in the linked list.
-   * @return number of elements in the linked list
+   * Devuelve el número de elementos en la lista enlazada.
+   * @return número de elementos en la lista enlazada
    */
   public int size() { return size; }
 
   /**
-   * Tests whether the linked list is empty.
-   * @return true if the linked list is empty, false otherwise
+   * Verifica si la lista enlazada está vacía.
+   * @return true si la lista enlazada está vacía, false en caso contrario
    */
   public boolean isEmpty() { return size == 0; }
 
   /**
-   * Returns (but does not remove) the first element of the list
-   * @return element at the front of the list (or null if empty)
+   * Devuelve (pero no elimina) el primer elemento de la lista.
+   * @return el elemento al frente de la lista (o null si está vacía)
    */
-  public E first() {             // returns (but does not remove) the first element
+  public E first() {             // devuelve (pero no elimina) el primer elemento
     if (isEmpty()) return null;
-    return tail.getNext().getElement();         // the head is *after* the tail
+    return tail.getNext().getElement();         // el head está *después* del tail
   }
 
   /**
-   * Returns (but does not remove) the last element of the list
-   * @return element at the back of the list (or null if empty)
+   * Devuelve (pero no elimina) el último elemento de la lista.
+   * @return el elemento al final de la lista (o null si está vacía)
    */
-  public E last() {              // returns (but does not remove) the last element
+  public E last() {              // devuelve (pero no elimina) el último elemento
     if (isEmpty()) return null;
     return tail.getElement();
   }
 
-  // update methods
+  // Métodos de actualización
   /**
-   * Rotate the first element to the back of the list.
+   * Rota el primer elemento al final de la lista.
    */
-  public void rotate() {         // rotate the first element to the back of the list
-    if (tail != null)                // if empty, do nothing
-      tail = tail.getNext();         // the old head becomes the new tail
+  public void rotate() {         // rota el primer elemento al final de la lista
+    if (tail != null)                // si está vacía, no hace nada
+      tail = tail.getNext();         // el antiguo head se convierte en el nuevo tail
   }
 
   /**
-   * Adds an element to the front of the list.
-   * @param e  the new element to add
+   * Agrega un elemento al frente de la lista.
+   * @param e  el nuevo elemento a agregar
    */
-  public void addFirst(E e) {                // adds element e to the front of the list
+  public void addFirst(E e) {                // agrega el elemento e al frente de la lista
     if (size == 0) {
       tail = new Node<>(e, null);
-      tail.setNext(tail);                     // link to itself circularly
+      tail.setNext(tail);                     // se enlaza a sí mismo circularmente
     } else {
       Node<E> newest = new Node<>(e, tail.getNext());
       tail.setNext(newest);
@@ -141,30 +118,163 @@ public class CircularlyLinkedList<E> {
   }
 
   /**
-   * Adds an element to the end of the list.
-   * @param e  the new element to add
+   * Agrega un elemento al final de la lista.
+   * @param e  el nuevo elemento a agregar
    */
-  public void addLast(E e) {                 // adds element e to the end of the list
-    addFirst(e);             // insert new element at front of list
-    tail = tail.getNext();   // now new element becomes the tail
+  public void addLast(E e) {                 // agrega el elemento e al final de la lista
+    addFirst(e);             // inserta el nuevo elemento al frente de la lista
+    tail = tail.getNext();   // ahora el nuevo elemento se convierte en el tail
   }
 
   /**
-   * Removes and returns the first element of the list.
-   * @return the removed element (or null if empty)
+   * Elimina y devuelve el primer elemento de la lista.
+   * @return el elemento eliminado (o null si está vacía)
    */
-  public E removeFirst() {                   // removes and returns the first element
-    if (isEmpty()) return null;              // nothing to remove
+  public E removeFirst() {                   // elimina y devuelve el primer elemento
+    if (isEmpty()) return null;              // nada que eliminar
     Node<E> head = tail.getNext();
-    if (head == tail) tail = null;           // must be the only node left
-    else tail.setNext(head.getNext());       // removes "head" from the list
+    if (head == tail) tail = null;           // debe ser el único nodo restante
+    else tail.setNext(head.getNext());       // elimina "head" de la lista
     size--;
     return head.getElement();
   }
+  //----------- métodos agregados ------------------
+
+  /* Inserta el elemento e en la posición n de la lista */
+  public void addPos(E e, int n) throws IndexOutOfBoundsException {
+      // Verifica si la posición es válida dentro del rango de la lista
+      if (n < 0 || n > size)
+          throw new IndexOutOfBoundsException("Posición no válida: " + n);
+       if (n == 0){
+          addFirst(e); // Si la posición es 0, agrega al inicio
+       }else if (n == size){
+          addLast(e); // Si la posición es igual al tamaño, agrega al final
+       }else{
+          Node<E> current = tail.getNext(); // Comienza desde el primer nodo
+          for (int i = 0; i < n - 1; i++) { // Recorre hasta la posición deseada
+              current = current.getNext();
+          }
+          Node<E> newNode = new Node<>(e, current.getNext()); // Crea el nuevo nodo
+          current.setNext(newNode); // Enlaza el nuevo nodo en la posición deseada
+          size++;
+      }
+  }
 
   /**
-   * Produces a string representation of the contents of the list.
-   * This exists for debugging purposes only.
+     * Elemina el primer nodo que contiene el elemento especificado 'e' y lo
+     * devuelve
+     * Si el elemento no se encuentra, retorna 'null'
+     * 
+     * @param e Elemento a eliminar de la lista
+     * @return Elemento eliminado si se encuentra, o 'null' si no esta lista
+     */
+    public E removeElement(E e) {
+      if (isEmpty())
+          return null; // Si la lista esta vacia, retorna null
+
+      Node<E> current = tail.getNext(); // Comienza desde el primer nodo
+      Node<E> previous = tail; // Nodo anterior al actual
+      do {
+          if (current.getElement().equals(e)) { // Si el elemento coincide
+              if (current == tail) { // Si es el último nodo
+                  if (current.getNext() == tail) { // Si es el único nodo restante
+                      tail = null; // La lista queda vacía
+                  } else {
+                      previous.setNext(current.getNext()); // Enlaza el anterior con el siguiente
+                      tail = previous; // Actualiza el tail
+                  }
+              } else {
+                  previous.setNext(current.getNext()); // Enlaza el anterior con el siguiente
+              }
+              size--; // Disminuye el tamaño de la lista
+              return current.getElement(); // Retorna el elemento eliminado
+          }
+          previous = current; // Avanza al siguiente nodo
+          current = current.getNext();
+      } while (current != tail.getNext()); // Recorre toda la lista
+      return null; // Si no se encuentra el elemento, retorna null
+  }
+
+  
+    /**
+     * Elemina elemento que se encuentra en la posicion 'n' de la lista
+     * Si la posicion no es valida, lanza una excepcion
+     * 
+     * @param n Posicion del elemento a eliminar
+     * @return Elemento eliminado de la lista si la posicion es valida, o lanza una
+     *         excepcion si no lo es
+     * @throws IndexOutOfBoundsException Si la posicion esta fuera de rango de la
+     *                                   lista
+     */
+    public E removePos(int n) throws IndexOutOfBoundsException {
+      // Verifica si la posicion es valida dentro del rango de la lista
+      if (n < 0 || n >= size)
+          throw new IndexOutOfBoundsException("Posicion no valida: " + n);
+
+      if (n == 0)
+          return removeFirst(); // Caso especial: eliminar el primer nodo
+
+      Node<E> current = tail.getNext();
+      Node<E> previous = tail;
+      for (int i = 0; i < n; i++) {
+          previous = current;
+          current = current.getNext();
+      }
+      previous.setNext(current.getNext()); // Enlaza el nodo anterior con el siguiente
+      if (current == tail) { 
+          tail = previous; // Actualiza el tail si se elimina el último nodo
+      }
+      size--;
+      return current.getElement(); // Retorna el elemento eliminado
+  }
+  
+    /**
+     * Inserta todos los elementos de la Lista l al final de la lista
+     * 
+     * @param l Lista cuyos elementos se concatenaran al final de la lista actual
+     */
+    public void concatenate(CircularlyLinkedList<E> l) {
+        if (l.isEmpty())
+          return; // Si la lista es nula o vacia, no hace nada
+        if (isEmpty()){
+          tail = l.tail; // Si la lista actual es vacia, asigna el tail de l
+          tail.setNext(tail); // Enlaza el tail con si mismo
+          size = l.size; // Actualiza el tamaño de la lista actual
+        }else {
+          Node<E> current = tail.getNext(); // Comienza desde el primer nodo
+          tail.setNext(l.tail.getNext()); // Enlaza el tail de la lista actual con el primer nodo de l
+          l.tail.setNext(current); // Enlaza el tail de l con el primer nodo de la lista actual
+          tail = l.tail; // Actualiza el tail de la lista actual
+        }
+        size += l.size; // Aumenta el tamaño de la lista actual
+        l.tail = null; // Limpia la lista l para evitar referencias cruzadas
+        l.size = 0; // Reinicia el tamaño de la lista l
+    }
+    /**
+     * Busca el elemento 'e' dentro de la lista
+     * Retorna el elemento si se encuentra, o NULL si no esta en la lista
+     * 
+     * @param e Elemento a buscar en la lista
+     * @return El elemento si se encuentra, o NULL si no esta en la lista
+     */
+    public E search(E e) {
+      if (isEmpty())
+          return null; // Si la lista esta vacia, retorna null
+        
+      Node<E> current = tail.getNext();
+      do {
+          if (current.getElement().equals(e)) {
+              return current.getElement();
+          }
+          current = current.getNext();
+      } while (current != tail.getNext());
+
+      return null; // Si no encuentra el elemento, retorna null
+  }
+  //------------
+  /**
+   * Produce una representación en formato de cadena del contenido de la lista.
+   * Esto existe solo para propósitos de depuración.
    */
   public String toString() {
     if (tail == null) return "()";
@@ -179,11 +289,55 @@ public class CircularlyLinkedList<E> {
     sb.append(")");
     return sb.toString();
   }
+  //------------------ métodos adicionales ------------------
+  @SuppressWarnings({ "unchecked" })
+    public boolean equals(Object o) {
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        CircularlyLinkedList other = (CircularlyLinkedList) o; // use nonparameterized type
+        if (size != other.size)
+            return false;
+        Node<E> walkA = tail; // traverse the primary list
+        Node<E> walkB = other.tail; // traverse the secondary list
+        while (walkA != tail) {
+            if (!walkA.getElement().equals(walkB.getElement()))
+                return false; // mismatch
+            walkA = walkA.getNext();
+            walkB = walkB.getNext();
+        }
+        return true; // if we reach this, everything matched successfully
+    }
 
-  public E search(E e) {
-    
-    return null; // elemento no encontrado
-  }
+    @SuppressWarnings({ "unchecked" })
+    public CircularlyLinkedList<E> clone() throws CloneNotSupportedException {
+        // always use inherited Object.clone() to create the initial copy
+        CircularlyLinkedList other = (CircularlyLinkedList) super.clone(); // safe cast
+        if (size > 0) { // we need independent chain of nodes
+            other.tail = new Node<>(tail.getElement(), null); 
+            Node<E> walk = tail.getNext(); // walk through remainder of original list
+            Node<E> otherTail = other.tail; // remember most recently created node
+            while (walk != tail) { // make a new node storing same element
+                Node<E> newest = new Node<>(walk.getElement(), null);
+                otherTail.setNext(newest); // link previous node to this one
+                otherTail = newest;
+                walk = walk.getNext();
+            }
+            otherTail.setNext(other.tail); // link the last node to the tail
+        }
+        return other;
+    }
+
+    public int hashCode() {
+        int h = 0;
+        for (Node<E> walk = tail.getNext(); walk != tail; walk = walk.getNext()) {
+            h ^= walk.getElement().hashCode(); // bitwise exclusive-or with element's code
+            h = (h << 5) | (h >>> 27); // 5-bit cyclic shift of composite code
+        }
+        h ^= tail.getElement().hashCode(); // include the tail element in the hash code
+        return h;
+    }
 
 }
 
