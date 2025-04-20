@@ -6,6 +6,62 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PruebaDoublyLinkedList",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2021.lista.PruebaDoublyLinkedList",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "PruebaSinglyLinkedList",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2021.lista.PruebaSinglyLinkedList",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "TestCuenta",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2021.banco.TestCuenta",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "TestSwap",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2022.lista.TestSwap",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "TestAlternate",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2022.lista.TestAlternate",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "TestClub",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2022.actividad.test.TestClub",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2022.actividad.test.test",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2022.src.test",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
             "name": "DoublyLinkedListTest",
             "request": "launch",
             "mainClass": "TP3.ej7.actividad.test.DoublyLinkedListTest",
