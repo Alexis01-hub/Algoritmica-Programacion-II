@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PruebaLD",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2020.lista.PruebaLD",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "PruebaLS",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2020.lista.PruebaLS",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "PruebaDepa",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2020.empresa.PruebaDepa",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
+            "name": "PruebaEmp",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2020.empresa.PruebaEmp",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
             "name": "PruebaDoublyLinkedList",
             "request": "launch",
             "mainClass": "ArchivosParcial1.MiResolucion.parcial2021.lista.PruebaDoublyLinkedList",
