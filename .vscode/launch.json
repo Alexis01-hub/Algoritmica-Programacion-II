@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Prueba",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2024.internet.Prueba",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
+            "name": "PruebaLs2",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2024.lista.PruebaLs2",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
+            "name": "PruebaLs",
+            "request": "launch",
+            "mainClass": "ArchivosParcial1.MiResolucion.parcial2024.lista.PruebaLs",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
             "name": "PruebaLD",
             "request": "launch",
             "mainClass": "ArchivosParcial1.MiResolucion.parcial2020.lista.PruebaLD",
