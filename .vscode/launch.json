@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "iterativoSearch",
+            "request": "launch",
+            "mainClass": "iterativoSearch",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
+            "name": "binarySearch",
+            "request": "launch",
+            "mainClass": "binarySearch",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
             "name": "Prueba",
             "request": "launch",
             "mainClass": "ArchivosParcial1.MiResolucion.parcial2024.internet.Prueba",
