@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PruebaFactorial",
+            "request": "launch",
+            "mainClass": "factorial.PruebaFactorial",
+            "projectName": "Algoritmica-Programacion-II_cfb40c95"
+        },
+        {
+            "type": "java",
             "name": "iterativoSearch",
             "request": "launch",
             "mainClass": "iterativoSearch",
