@@ -251,6 +251,12 @@ O(2ⁿ) es catastrófico para n > 30.
 - **Theta (Θ)**: Tiempo de ejecución promedio. Describe el caso promedio.
 
 
+### Videos recomendados:
+- [Notación Big O | Análisis de algoritmos de forma sencilla
+](https://www.youtube.com/watch?v=MyAiCtuhiqQ)
+
+- [Big O para algoritmos Recursivos | Análisis de Algoritmos
+](https://www.youtube.com/watch?v=dqFS-CXCEVQ)
 
 
 
