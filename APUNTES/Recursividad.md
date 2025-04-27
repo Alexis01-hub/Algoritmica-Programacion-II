@@ -1,37 +1,58 @@
-**patron de la recursividad:**
-- condicion para tirar una exepcion
-- caso base
-- caso de recursion
+# Apunte: Recursividad
+## Concepto Básico
+**Recursividad:** Un método que se llama a sí mismo.
 
-en el caso final , despues del caso base. libera los recursos que se han utilizado en la recursion de l pila.
+- Ejemplo clásico: Factorial de un número.
 
-(comparar metodos recursivos y no recursivos, y ver los tiempos de ejecucion)
-
-**Busqueda binaria:**
-
+Definición recursiva:
 ```java
-public static boolean binarySearch(int[] data, int target, int low, int high) {
-    if (low > high)
-        return false;    // interval empty; no match
-    else {
-        int mid = (low + high) / 2;
-        if (target == data[mid])
-            return true;    // found a match
-        else if (target < data[mid])
-            return binarySearch(data, target, low, mid - 1);   // recur left of the middle
-        else
-            return binarySearch(data, target, mid + 1, high);   // recur right of the middle
-    }
+public static int factorial(int n) {
+    if (n == 0) return 1;          // Caso base
+    else return n * factorial(n-1); // Caso recursivo
 }
 ```
 
-si solo hay una sola llamada al metodo recursivo. entonces es una recursividad lineal.
-y si hay dos entonces es recursividad binaria. y si es tres o mas veces es recursividad multiple.
+**Partes de un Método Recursivo**
+1. Caso Base: Condición que detiene la recursión (sin llamadas recursivas).
 
-**Recursividad de cola:**
+2. Llamada Recursiva: Invocación al mismo método, progresando hacia el caso base.
 
-La recursión de cola se produce cuando un método linealmente
-recursivo hace su llamada recursiva como su último paso.
+En el caso final, despues del caso base. libera los recursos que se han utilizado en la recursion de la pila.
 
-**recursion multiple:**
+### Tipos de Recursividad
 
+- Lineal: Una sola llamada recursiva por caso (ejemplo: suma de elementos de un arreglo).
+```java
+public static int linearSum(int[] A, int n) {
+    if (n == 0) return 0;
+    else return linearSum(A, n-1) + A[n-1];
+}
+```
+- Binaria: dos llamados a recurción (Ejemplo: Búsqueda binaria).
+```java
+public static int binarySearch(int[] arr, int target, int left, int right) {
+    if (left > right) return -1; // Caso base: no encontrado
+    int mid = (left + right) / 2;
+    if (arr[mid] == target) return mid; // Caso base: encontrado
+    else if (arr[mid] < target) return binarySearch(arr, target, mid + 1, right); // Llamada recursiva derecha
+    else return binarySearch(arr, target, left, mid - 1); // Llamada recursiva izquierda
+}
+```
+- Multiple: más de dos llamadas recursivas.
+
+### Recursividad de cola:
+- Definición: La llamada recursiva es la última operación del método.
+
+- Ejemplo: Factorial de cola.
+```java
+public static int factorialCola(int n, int acumulador) {
+    if (n == 0) return acumulador; // Caso base
+    else return factorialCola(n - 1, n * acumulador); // Llamada recursiva en cola
+}
+```
+
+### Videos recomendados:
+
+- [Recursividad | FÁCIL de entender y visualizar | Recursión](https://www.youtube.com/watch?v=YwRjEOFxvO0)
+
+- [Recursividad pero Optimizada!!! Recursión de Cola](https://www.youtube.com/watch?v=SIgfSYyWVjo)
