@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BinarySearch",
+            "request": "launch",
+            "mainClass": "BinarySearch",
+            "projectName": "codigos_457f5964"
+        },
+        {
+            "type": "java",
             "name": "PruebaFactorial",
             "request": "launch",
             "mainClass": "factorial.PruebaFactorial",
