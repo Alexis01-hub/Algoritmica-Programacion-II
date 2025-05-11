@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "borrar",
+            "request": "launch",
+            "mainClass": "borrar",
+            "projectName": "Algoritmica-Programacion-II_979c3e04"
+        },
+        {
+            "type": "java",
             "name": "DiskSpace",
             "request": "launch",
             "mainClass": "DiskSpace",
