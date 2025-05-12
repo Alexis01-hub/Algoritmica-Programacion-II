@@ -1,19 +1,31 @@
 import java.util.EmptyStackException;
 
 /**
- * Implementación de una pila (stack) utilizando una lista doblemente enlazada.
+ * Implementación de una pila (stack) utilizando una lista enlazada.
  *
  * @param <T> El tipo de elementos almacenados en la pila.
  */
-public class DoublyLinkedStack<T> implements Stack<T> {
-    private DoublyLinkedList<T> list; // Lista doblemente enlazada que almacena los elementos de la pila.
+public class LinkedStack<T> implements Stack<T> {
 
     /**
-     * Constructor que inicializa la pila como una lista doblemente enlazada vacía.
+     * Clase interna que representa un nodo en la lista enlazada.
      */
-    public DoublyLinkedStack() {
-        this.list = new DoublyLinkedList<>();
+    private class Node {
+        T data; // El dato almacenado en el nodo.
+        Node next; // Referencia al siguiente nodo.
+
+        /**
+         * Constructor que inicializa el nodo con un dato.
+         *
+         * @param data El dato a almacenar en el nodo.
+         */
+        Node(T data) {
+            this.data = data;
+        }
     }
+
+    private Node top; // Referencia al nodo superior de la pila.
+    private int size; // Tamaño actual de la pila.
 
     /**
      * Inserta un elemento en la parte superior de la pila.
@@ -22,7 +34,10 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public void push(T element) {
-        list.addFirst(element);
+        Node newNode = new Node(element);
+        newNode.next = top;
+        top = newNode;
+        size++;
     }
 
     /**
@@ -33,10 +48,13 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public T pop() {
-        if (list.isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list.removeFirst();
+        T data = top.data;
+        top = top.next;
+        size--;
+        return data;
     }
 
     /**
@@ -47,10 +65,10 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public T top() {
-        if (list.isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list.first();
+        return top.data;
     }
 
     /**
@@ -60,7 +78,7 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public boolean isEmpty() {
-        return list.isEmpty();
+        return size == 0;
     }
 
     /**
@@ -70,6 +88,6 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public int size() {
-        return list.size();
+        return size;
     }
 }

@@ -93,3 +93,34 @@ public interface Queue<E> {
 }
 ```
 
+### Colas Circulares (Circular Queue)
+**Definición:** Cola implementada con arreglo circular para reutilizar espacios.
+
+**Características:**
+
+- Índices front y rear "dan la vuelta" usando aritmética modular (%).
+
+- Evita desplazamientos costosos al llenarse.
+
+**Ejemplo:**
+
+```java
+public class CircularQueue<E> {
+    private E[] data;
+    private int front = 0, size = 0;
+
+    public void enqueue(E e) {
+        int rear = (front + size) % data.length;
+        data[rear] = e;
+        size++;
+    }
+
+    public E dequeue() {
+        E answer = data[front];
+        front = (front + 1) % data.length;
+        size--;
+        return answer;
+    }
+}
+```
+

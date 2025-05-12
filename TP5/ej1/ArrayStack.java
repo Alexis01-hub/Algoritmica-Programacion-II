@@ -1,28 +1,40 @@
 import java.util.EmptyStackException;
 
 /**
- * Implementación de una pila (stack) utilizando una lista doblemente enlazada.
+ * Implementación de una pila (stack) utilizando un arreglo estático.
  *
  * @param <T> El tipo de elementos almacenados en la pila.
  */
-public class DoublyLinkedStack<T> implements Stack<T> {
-    private DoublyLinkedList<T> list; // Lista doblemente enlazada que almacena los elementos de la pila.
+public class ArrayStack<T> implements Stack<T> {
+    private Object[] array; // Arreglo que almacena los elementos de la pila.
+    private int size; // Número de elementos actuales en la pila.
 
     /**
-     * Constructor que inicializa la pila como una lista doblemente enlazada vacía.
+     * Constructor que inicializa la pila con un tamaño fijo.
+     *
+     * @param capacity La capacidad máxima de la pila.
+     * @throws IllegalArgumentException Si la capacidad es menor o igual a 0.
      */
-    public DoublyLinkedStack() {
-        this.list = new DoublyLinkedList<>();
+    public ArrayStack(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("La capacidad debe ser mayor a 0.");
+        }
+        array = new Object[capacity];
+        size = 0;
     }
 
     /**
      * Inserta un elemento en la parte superior de la pila.
      *
      * @param element El elemento a insertar.
+     * @throws IllegalStateException Si la pila está llena.
      */
     @Override
     public void push(T element) {
-        list.addFirst(element);
+        if (size == array.length) {
+            throw new IllegalStateException("La pila está llena.");
+        }
+        array[size++] = element;
     }
 
     /**
@@ -33,10 +45,12 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public T pop() {
-        if (list.isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list.removeFirst();
+        T element = (T) array[--size];
+        array[size] = null; // Evitar referencias colgantes.
+        return element;
     }
 
     /**
@@ -47,10 +61,10 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public T top() {
-        if (list.isEmpty()) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list.first();
+        return (T) array[size - 1];
     }
 
     /**
@@ -60,7 +74,7 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public boolean isEmpty() {
-        return list.isEmpty();
+        return size == 0;
     }
 
     /**
@@ -70,6 +84,6 @@ public class DoublyLinkedStack<T> implements Stack<T> {
      */
     @Override
     public int size() {
-        return list.size();
+        return size;
     }
 }
