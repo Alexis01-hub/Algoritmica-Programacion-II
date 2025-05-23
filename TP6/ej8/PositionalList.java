@@ -24,6 +24,8 @@ package ej8;
 
 import java.util.Iterator;
 
+import ej9.Position;
+
 /**
  * An interface for positional lists.
  * @author Michael T. Goodrich
