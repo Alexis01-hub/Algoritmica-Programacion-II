@@ -7,7 +7,7 @@ public class PruebaArrayList {
         // Simula agregar elementos incrementando el size manualmente
         // (o implementa y usa lista.add si lo tienes)
         for (int i = 0; i < 5; i++) {
-            // lista.add("Elemento " + i);
+            lista.add("Elemento " + i);
         }
 
         System.out.println("Capacidad antes de trimToSize: " + lista.capacidad());
