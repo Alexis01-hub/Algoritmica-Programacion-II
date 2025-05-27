@@ -133,7 +133,28 @@ public abstract class AbstractTree<E> implements Tree<E> {
     return h;
   }
 
-  //--------------------- aaaaaaaaaaaaaaaaaaaaa
+  //-------- agregacion de metodos de la actividad 5 --------
+
+  /**
+  * Retorna una colección iterable con las posiciones de los ancestros hasta la
+  * raíz
+  * 
+  * @param p posición del primer nodo
+  * @return colección iterable con las posiciones de los ancestros hasta la raíz
+  */
+  public Iterable<Position<E>> ancestor (Position<E> p){
+    if (p == null) {
+      throw new IllegalArgumentException("Position cannot be null");
+    }
+    List<Position<E>> list = new ArrayList<Position<E>>();
+    while (!isRoot(p)){ // Mientras no sea la raíz
+      list.add(p); // Agrega la posición actual a la lista
+      p = parent(p); // Mueve a la posición del padre
+    }
+    list.add(p); // Agrega la raíz al final
+    return list; // Retorna la lista de ancestros
+  }  
+
   /**
    * Busca un elemento dentro del árbol y retorna su posición o null si no se 
    * encuentra
@@ -166,8 +187,88 @@ public abstract class AbstractTree<E> implements Tree<E> {
     }
     return list;
   }
+  /**
+  * Indica si un árbol tienen elementos duplicados
+  * 
+  * @return "true" si tiene elementos duplicados o "false" caso contrario
+  */
+  public boolean duplicate() {
+    List<E> list = new ArrayList<E>();
+    for (Position<E> p : positions()) {
+        if (list.contains(p.getElement())) {
+            return true; // Si ya existe el elemento, hay duplicados
+        }
+        list.add(p.getElement()); // Agrega el elemento a la lista
+    }
+    return false; // Si no se encontró duplicados, retorna false
+  }
 
-  //----------------
+
+  /**
+  * Retorna un iterable con todas las posiciones de los nodos externos (hijos)
+  * 
+  * @return iterable de las posiciones de los nodos externos
+  */
+  public Iterable<Position<E>> listChildren() {
+    List<Position<E>> hojas = new ArrayList<>(); // Lista para almacenar las posiciones de las hojas
+    if (isEmpty()) {
+        return hojas; // Retorna una lista vacía si el árbol está vacío
+    }
+    for (Position<E> p : positions()) {
+        if (isExternal(p)) { // Es hoja si no tiene hijos
+            hojas.add(p); // Agrega la posición de la hoja a la lista
+        }
+    }
+    return hojas;
+  }
+
+  /**
+  * Retorna un iterable con todas las posiciones de la rama más larga de un árbol
+  * comenzando desde un nodo externo hasta llegar a la raíz
+  * 
+  * Si hay más de una rama con la misma profundidad, retorna una de las ramas que
+  * cumpla con la condición dada
+  * 
+  * @return iterable de las posiciones de rama más larga de un árbol
+  */
+  public Iterable<Position<E>> listGreaterAncestor() {
+    List<Position<E>> longestBranch = new ArrayList<>(); // Lista para almacenar la rama más larga
+    for (Position<E> leaf : listChildren()) { // listChildren() retorna las hojas
+        List<Position<E>> currentBranch = new ArrayList<>(); // Lista para almacenar la rama actual
+        Position<E> current = leaf; // Comienza desde la hoja actual
+        // Recorre desde la hoja hasta la raíz
+        while (current != null) {
+            currentBranch.add(current); // Agrega la posición actual a la rama
+            if (isRoot(current)) break; // Si es la raíz, termina el recorrido
+            current = parent(current); // Mueve a la posición del padre
+        }
+        // Si la rama actual es más larga, la guardamos
+        if (currentBranch.size() > longestBranch.size()) { // Compara tamaños de ramas
+            longestBranch = currentBranch; // Actualiza la rama más larga
+        }
+    }
+    return longestBranch;
+  }
+
+  /**
+  * Retorna un iterable con los valores de todos los nodos que tienen la
+  * profundidad depth
+  * 
+  * @param depth profundidad
+  * 
+  * @return iterable con los valores de los nodos que tienen la profundidad depth
+  */
+  public Iterable<E> listDepth(int depth) {
+    List<E> result = new ArrayList<>(); 
+    for (Position<E> p : positions()) { // Itera sobre todas las posiciones del árbol
+        if (depth(p) == depth) { // Verifica si la profundidad del nodo es igual a la buscada
+            result.add(p.getElement()); // Agrega el elemento del nodo a la lista de resultados
+        }
+    }
+    return result; 
+  }
+
+  //---------------- fin de agregación de métodos de la actividad 5 ----------------
 
 
   // ---------- support for various iterations of a tree ----------
