@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Prueba",
+            "request": "launch",
+            "mainClass": "Prueba",
+            "projectName": "Algoritmica-Programacion-II_f2dd8c28"
+        },
+        {
+            "type": "java",
             "name": "PruebaStack",
             "request": "launch",
             "mainClass": "PruebaStack",
