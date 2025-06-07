@@ -35,11 +35,11 @@ put(k, v) → agrega o actualiza el valor de k.
 
 remove(k) → elimina la entrada con clave k.
 
-keySet() → conjunto de claves.
+keySet() → conjunto de claves. Osea devuelve todas las claves
 
-values() → colección de valores.
+values() → colección de valores. Osea devuelve todos los valores
 
-entrySet() → conjunto de pares (k, v).
+entrySet() → conjunto de pares (k, v). Osea devuelve todos los pares clave-valor
 ```
 
 - [🚀 HASH MAP en JAVA POO 🖥️ | COLLECTIONS | Explicación FÁCIL 💥#16 Bis](https://www.youtube.com/watch?v=jT0gnObfFls)
