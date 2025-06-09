@@ -27,6 +27,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import net.act4.LinkedBinaryTree;
+
 /**
  * An implementation of a sorted map using a binary search tree.
  *
